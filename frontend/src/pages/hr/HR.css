@@ -1,0 +1,276 @@
+/* HR Module Specific Styles */
+
+.hr-module-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hr-tabs {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 16px;
+  overflow-x: auto;
+}
+
+.hr-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.hr-tab:hover {
+  background-color: var(--surface-color-light);
+  color: var(--text-primary);
+}
+
+.hr-tab.active {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.hr-content-area {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hr-search {
+  width: 350px;
+}
+
+.primary-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.primary-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* ERP Table */
+.table-container {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.erp-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.erp-table th, .erp-table td {
+  padding: 16px 24px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.erp-table th {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  background-color: rgba(15, 23, 42, 0.4);
+}
+
+.erp-table tr:last-child td {
+  border-bottom: none;
+}
+
+.erp-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.erp-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Badges & Specifics */
+.avatar.small {
+  width: 32px;
+  height: 32px;
+  font-size: 0.875rem;
+}
+
+.badge-id {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-family: monospace;
+  color: var(--text-secondary);
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-badge.active {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--success-color);
+}
+
+.status-badge.warning {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: var(--secondary-color);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  color: var(--text-secondary);
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background-color: var(--surface-color-light);
+  color: var(--text-primary);
+}
+
+.icon-btn.danger:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--danger-color);
+}
+
+/* Placeholders */
+.placeholder-module {
+  background-color: var(--surface-color);
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+}
+
+.placeholder-content h2 {
+  margin-bottom: 12px;
+}
+
+.placeholder-box {
+  height: 200px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.05));
+  border-radius: 12px;
+  margin-top: 24px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  padding: 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.form-group input, .form-group select {
+  padding: 10px 14px;
+  background-color: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--primary-color);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.secondary-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.secondary-btn:hover {
+  background-color: var(--surface-color-light);
+}

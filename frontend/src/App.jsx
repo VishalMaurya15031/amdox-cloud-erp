@@ -4,6 +4,10 @@ import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import HRDashboard from './pages/hr/HRDashboard';
+import EmployeeDirectory from './pages/hr/EmployeeDirectory';
+import Attendance from './pages/hr/Attendance';
+import LeaveManagement from './pages/hr/LeaveManagement';
 import './index.css';
 
 function App() {
@@ -17,8 +21,12 @@ function App() {
         {/* Protected Routes inside Layout */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
-          {/* Placeholder routes for the other modules */}
-          <Route path="hr" element={<div className="page-header"><h1>Core HR & Payroll</h1></div>} />
+          <Route path="hr" element={<HRDashboard />}>
+            <Route index element={<EmployeeDirectory />} />
+            <Route path="attendance" element={<Attendance />} />
+            <Route path="leaves" element={<LeaveManagement />} />
+            <Route path="payroll" element={<div className="placeholder-module"><h2>Payroll System</h2></div>} />
+          </Route>
           <Route path="inventory" element={<div className="page-header"><h1>AI Inventory</h1></div>} />
           <Route path="finance" element={<div className="page-header"><h1>Finance & Accounting</h1></div>} />
           <Route path="crm" element={<div className="page-header"><h1>Sales & CRM</h1></div>} />

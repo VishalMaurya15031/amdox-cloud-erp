@@ -86,6 +86,41 @@ app.post("/api/auth/login", async (req, res) => {
   }
 });
 
+// --- EMPLOYEE ROUTES (HR MODULE) ---
+
+// Get all employees
+app.get("/api/employees", async (req, res) => {
+  try {
+    const employees = await prisma.employee.findMany({
+      orderBy: { createdAt: "desc" }
+    });
+    res.json(employees);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching employees" });
+  }
+});
+
+// Add a new employee
+app.post("/api/employees", async (req, res) => {
+  try {
+    const { name, email, department, role, status } = req.body;
+    
+    // Auto-generate empId like EMP-001
+    const count = await prisma.employee.count();
+    const empId = `EMP-${String(count + 1).padStart(3, '0')}`;
+
+    const newEmployee = await prisma.employee.create({
+      data: { empId, name, email, department, role, status: status || "Active" }
+    });
+
+    res.status(201).json(newEmployee);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error adding employee" });
+  }
+});
+
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
