@@ -121,6 +121,50 @@ app.post("/api/employees", async (req, res) => {
   }
 });
 
+// --- INVENTORY ROUTES (AI MODULE 2) ---
+
+// Get all inventory items
+app.get("/api/inventory", async (req, res) => {
+  try {
+    const items = await prisma.inventoryItem.findMany({
+      orderBy: { createdAt: "desc" }
+    });
+    res.json(items);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching inventory" });
+  }
+});
+
+// Add new inventory item
+app.post("/api/inventory", async (req, res) => {
+  try {
+    const { sku, name, category, quantity, price, aiAlert } = req.body;
+    
+    // Determine status based on quantity
+    let status = "In Stock";
+    if (quantity <= 0) status = "Out of Stock";
+    else if (quantity < 10) status = "Low Stock";
+
+    const newItem = await prisma.inventoryItem.create({
+      data: { 
+        sku, 
+        name, 
+        category, 
+        quantity: parseInt(quantity), 
+        price: parseFloat(price), 
+        status,
+        aiAlert 
+      }
+    });
+
+    res.status(201).json(newItem);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error adding inventory item" });
+  }
+});
+
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

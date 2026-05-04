@@ -28,3 +28,16 @@ model Employee {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }
+
+model InventoryItem {
+  id          String   @id @default(uuid())
+  sku         String   @unique
+  name        String
+  category    String
+  quantity    Int      @default(0)
+  price       Float    @default(0.0)
+  status      String   @default("In Stock")
+  aiAlert     String?  // E.g., "Restock in 5 days"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
